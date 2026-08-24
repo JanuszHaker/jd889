@@ -1,4 +1,49 @@
 
+const backgroundImages = [
+    "https://i.imgur.com/I9DpAkQ.png",
+    "https://i.imgur.com/kwDGU4P.jpeg",
+    "https://i.imgur.com/abgeyOw.jpeg",
+    "https://i.imgur.com/wVlMKvY.jpeg",
+    "https://i.imgur.com/JTL7t3A.jpeg",
+    "https://i.imgur.com/UeOR9oF.jpeg",
+    "https://i.imgur.com/xCTfBeo.jpeg",
+    "https://i.imgur.com/d5uPPgl.jpeg",
+    "https://i.imgur.com/95b6mrj.jpeg"
+];
+
+// Preload all background images
+backgroundImages.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+});
+
+let currentBgIndex = 0;
+const bgSlide1 = document.querySelector(".bg-slide-1");
+const bgSlide2 = document.querySelector(".bg-slide-2");
+let activeSlide = 1;
+
+if (bgSlide1 && bgSlide2) {
+    bgSlide1.style.backgroundImage = `url('${backgroundImages[0]}')`;
+    bgSlide1.classList.add("active");
+
+    setInterval(() => {
+        currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
+        const nextUrl = backgroundImages[currentBgIndex];
+
+        if (activeSlide === 1) {
+            bgSlide2.style.backgroundImage = `url('${nextUrl}')`;
+            bgSlide2.classList.add("active");
+            bgSlide1.classList.remove("active");
+            activeSlide = 2;
+        } else {
+            bgSlide1.style.backgroundImage = `url('${nextUrl}')`;
+            bgSlide1.classList.add("active");
+            bgSlide2.classList.remove("active");
+            activeSlide = 1;
+        }
+    }, 3000);
+}
+
 var selector = document.querySelector(".selector_box");
 selector.addEventListener('click', () => {
     if (selector.classList.contains("selector_open")){
