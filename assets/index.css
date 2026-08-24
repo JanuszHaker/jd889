@@ -326,15 +326,20 @@ input::-webkit-inner-spin-button {
 
 body {
     background-color: #000000;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
 }
 
 html, body {
-  background-color: black; 
   color: rgb(0, 0, 0);
   touch-action: manipulation;
   overscroll-behavior: none;
+  min-height: 100vh;
 }
 
 * {
